@@ -1,123 +1,123 @@
 local M = {}
 
 -- All blended values are pre-computed: color@alpha blended onto the editor bg.
--- Dark editor bg: #14171B, Black editor bg: #000000, Light editor bg: #E8EAED
+-- Dark editor bg: #14171B, Black editor bg: #000000, Light editor bg: #EBEDEF
 
 M.dark = {
   -- Backgrounds (darkest → lightest)
-  bg_dark  = "#08090A",  -- status/title bar
+  bg_dark  = "#08090B",  -- status/title bar
   bg       = "#14171B",  -- editor
   bg0      = "#0E1012",  -- panel / float
   bg1      = "#1A1E23",  -- main window (non-editor)
-  bg2      = "#23262B",  -- element hover / border
-  bg3      = "#2E3238",  -- element active / border variant
-  bg4      = "#505560",  -- disabled
+  bg2      = "#1A1E23",  -- element hover / border
+  bg3      = "#22272D",  -- element active / border variant
+  bg4      = "#4E5660",  -- disabled
 
   -- Foregrounds
   fg       = "#F2F4F6",
   fg1      = "#9CA0A6",
   fg2      = "#6E737A",
-  fg3      = "#505560",
+  fg3      = "#4E5660",
 
-  -- Accent colors (from the Zed theme palette)
-  accent   = "#D2FF3A",  -- lime (primary)
-  accent2  = "#B8E625",  -- yellow-lime (secondary)
-  blue     = "#6FB1FF",
-  green    = "#4ADE80",
-  yellow   = "#FFB347",
-  red      = "#FF5C5C",
+  -- Accent colors (from the Zed theme palette, v0.4.1 regrade)
+  accent   = "#B7A2FF",  -- violet (primary, placeholder pending a final hue)
+  accent2  = "#ED8EF3",  -- pink-violet (secondary)
+  blue     = "#78AFFF",
+  green    = "#4BDE7F",
+  yellow   = "#FFA85E",
+  red      = "#FF5C59",
 
   -- Pre-blended composite colors (alpha blended onto bg = #14171B)
-  selection   = "#323B20",  -- D2FF3A @ 16%
+  selection   = "#2E2D3F",  -- B7A2FF @ 16%
   active_line = "#1B1E22",  -- F2F4F6 @ 3%
-  bracket_bg  = "#262D1E",  -- D2FF3A @ 9%
+  bracket_bg  = "#232430",  -- B7A2FF @ 9%
   read_bg     = "#25282C",  -- 9CA0A6 @ 12.5%
   write_bg    = "#2E3135",  -- 9CA0A6 @ 19%
-  diff_add    = "#1E3128",  -- 4ADE80 @ 13%
-  diff_change = "#1D2B3A",  -- 6FB1FF @ 13%
-  diff_delete = "#341F20",  -- FF5C5C @ 13%
+  diff_add    = "#1B3128",  -- 4BDE7F @ 13%
+  diff_change = "#212B39",  -- 78AFFF @ 13%
+  diff_delete = "#332023",  -- FF5C59 @ 13%
 
-  git_add     = "#4ADE80",
-  git_change  = "#6FB1FF",
-  git_delete  = "#FF5C5C",
+  git_add     = "#4BDE7F",
+  git_change  = "#78AFFF",
+  git_delete  = "#FF5C59",
 }
 
 M.black = {
   -- Backgrounds (fully dark)
-  bg_dark  = "#000000",  -- status/title bar
+  bg_dark  = "#010102",  -- status/title bar
   bg       = "#000000",  -- editor
-  bg0      = "#080808",  -- panel / float
-  bg1      = "#0D0D0D",  -- main window (non-editor)
-  bg2      = "#181818",  -- element hover / border
-  bg3      = "#222222",  -- element active / border variant
-  bg4      = "#505560",  -- disabled
+  bg0      = "#070809",  -- panel / float
+  bg1      = "#0C0D0E",  -- main window (non-editor)
+  bg2      = "#0F0F10",  -- element hover / border
+  bg3      = "#17181A",  -- element active / border variant
+  bg4      = "#4E5660",  -- disabled
 
   -- Foregrounds (identical to dark)
   fg       = "#F2F4F6",
   fg1      = "#9CA0A6",
   fg2      = "#6E737A",
-  fg3      = "#505560",
+  fg3      = "#4E5660",
 
   -- Accent colors (identical to dark)
-  accent   = "#D2FF3A",
-  accent2  = "#B8E625",
-  blue     = "#6FB1FF",
-  green    = "#4ADE80",
-  yellow   = "#FFB347",
-  red      = "#FF5C5C",
+  accent   = "#B7A2FF",
+  accent2  = "#ED8EF3",
+  blue     = "#78AFFF",
+  green    = "#4BDE7F",
+  yellow   = "#FFA85E",
+  red      = "#FF5C59",
 
   -- Pre-blended composite colors (alpha blended onto bg = #000000)
-  selection   = "#212909",  -- D2FF3A @ 16%
+  selection   = "#1D1A29",  -- B7A2FF @ 16%
   active_line = "#070707",  -- F2F4F6 @ 3%
-  bracket_bg  = "#131705",  -- D2FF3A @ 9%
+  bracket_bg  = "#100F17",  -- B7A2FF @ 9%
   read_bg     = "#141415",  -- 9CA0A6 @ 12.5%
-  write_bg    = "#1E1F20",  -- 9CA0A6 @ 19%
-  diff_add    = "#0A1D11",  -- 4ADE80 @ 13%
-  diff_change = "#0F1721",  -- 6FB1FF @ 13%
-  diff_delete = "#210C0C",  -- FF5C5C @ 13%
+  write_bg    = "#1E1E20",  -- 9CA0A6 @ 19%
+  diff_add    = "#0A1D11",  -- 4BDE7F @ 13%
+  diff_change = "#101721",  -- 78AFFF @ 13%
+  diff_delete = "#210C0C",  -- FF5C59 @ 13%
 
-  git_add     = "#4ADE80",
-  git_change  = "#6FB1FF",
-  git_delete  = "#FF5C5C",
+  git_add     = "#4BDE7F",
+  git_change  = "#78AFFF",
+  git_delete  = "#FF5C59",
 }
 
 M.light = {
   -- Backgrounds (lightest → darkest)
-  bg_dark  = "#F7F8F9",  -- status/title bar
-  bg       = "#E8EAED",  -- editor
-  bg0      = "#EFF1F3",  -- panel / float
-  bg1      = "#F7F8F9",  -- main window (non-editor)
-  bg2      = "#D0D4D9",  -- element hover / border
-  bg3      = "#BFC4CA",  -- element active / border variant
-  bg4      = "#767B82",  -- disabled
+  bg_dark  = "#DADBDC",  -- status/title bar
+  bg       = "#EBEDEF",  -- editor
+  bg0      = "#E3E5E6",  -- panel / float
+  bg1      = "#F4F5F6",  -- main window (non-editor)
+  bg2      = "#D2D4D7",  -- element hover / border
+  bg3      = "#C5C7CA",  -- element active / border variant
+  bg4      = "#999FA7",  -- disabled
 
   -- Foregrounds
   fg       = "#0D0F11",
-  fg1      = "#555A61",
-  fg2      = "#636870",
-  fg3      = "#767B82",
+  fg1      = "#535960",
+  fg2      = "#787E86",
+  fg3      = "#999FA7",
 
-  -- Accent colors (darker variants for legibility on light bg)
-  accent   = "#4E6600",  -- dark olive (primary)
-  accent2  = "#566E0C",  -- olive-green (secondary)
-  blue     = "#1B4FCC",
+  -- Accent colors (darker variants for legibility on light bg, v0.4.1 regrade)
+  accent   = "#5F3BBB",  -- deep violet (primary, placeholder pending a final hue)
+  accent2  = "#8C2293",  -- deep magenta (secondary)
+  blue     = "#0054CB",
   green    = "#166534",
-  yellow   = "#92400E",
-  red      = "#B91C1C",
+  yellow   = "#8F4400",
+  red      = "#B91A25",
 
-  -- Pre-blended composite colors (alpha blended onto bg = #E8EAED)
-  selection   = "#D0D6C8",  -- 4D6B00 @ 16%
-  active_line = "#E2E4E8",  -- E0E3E7 @ 80%
-  bracket_bg  = "#D3D9CE",  -- 4D6B00 @ 13%
-  read_bg     = "#D4D7DA",  -- 555A61 @ 13%
-  write_bg    = "#CBCDD1",  -- 555A61 @ 20%
-  diff_add    = "#CDD9D5",  -- 166534 @ 13%
-  diff_change = "#CDD6E9",  -- 1B4FCC @ 13%
-  diff_delete = "#E2CFD2",  -- B91C1C @ 13%
+  -- Pre-blended composite colors (alpha blended onto bg = #EBEDEF)
+  selection   = "#D5D1E7",  -- 5F3BBB @ 16%
+  active_line = "#E2E5E9",  -- E0E3E7 @ 80% (off-palette base, kept as-is -- not part of the regrade)
+  bracket_bg  = "#D9D6E8",  -- 5F3BBB @ 13%
+  read_bg     = "#D7DADC",  -- 535960 @ 13%
+  write_bg    = "#CDCFD2",  -- 535960 @ 20%
+  diff_add    = "#CFDBD7",  -- 166534 @ 13%
+  diff_change = "#CCD9EA",  -- 0054CB @ 13%
+  diff_delete = "#E4D2D5",  -- B91A25 @ 13%
 
   git_add     = "#166534",
-  git_change  = "#1B4FCC",
-  git_delete  = "#B91C1C",
+  git_change  = "#0054CB",
+  git_delete  = "#B91A25",
 }
 
 return M
