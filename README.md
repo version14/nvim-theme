@@ -2,9 +2,9 @@
 
 A colorscheme for Neovim, ported from the [version14 Zed theme](https://github.com/version14/zed-theme). Dark, black, and light variants built around a violet accent (`#B7A2FF` dark/black, `#5F3BBB` light).
 
-> **Note:** the violet accent is currently a **placeholder**, standing in for a retired lime-green accent while a permanent replacement is chosen. It will change again in a future release.
+> The violet accent is a placeholder, standing in for a retired lime green accent while a permanent replacement is chosen. It will change again in a future release.
 >
-> Looking for plain Vim 8+ support instead of Neovim? Use [`version14/vim-theme`](https://github.com/version14/vim-theme) — this repo only ships a thin fallback for Neovim below 0.8, not a full standalone Vim implementation.
+> Looking for plain Vim 8+ support instead of Neovim? Use [`version14/vim-theme`](https://github.com/version14/vim-theme). This repo only ships a thin fallback for Neovim below 0.8, not a full standalone Vim implementation.
 
 ## Requirements
 
@@ -26,7 +26,7 @@ A colorscheme for Neovim, ported from the [version14 Zed theme](https://github.c
 }
 ```
 
-Then run `:Lazy sync` (or restart Neovim — lazy.nvim installs missing plugins automatically on startup, but running `:Lazy sync` yourself guarantees it happens immediately rather than on the next launch).
+Run `:Lazy sync` to install immediately, or restart Neovim.
 
 ### LazyVim
 
@@ -39,7 +39,7 @@ return {
 }
 ```
 
-Then run `:Lazy sync`. **This step is required** — adding the spec alone does not download the plugin; until you sync, Neovim falls back to whatever colorscheme was previously installed.
+Run `:Lazy sync` afterward. The plugin will not download until you do.
 
 ### packer.nvim
 
@@ -47,27 +47,23 @@ Then run `:Lazy sync`. **This step is required** — adding the spec alone does 
 use({ "version14/nvim-theme", as = "version14" })
 ```
 
-Then run `:PackerSync`.
+Run `:PackerSync`.
 
 ### Manual
-
-Clone the repo and add it to your runtimepath:
 
 ```sh
 git clone https://github.com/version14/nvim-theme ~/.config/nvim/pack/plugins/start/version14
 ```
 
-Then `:colorscheme version14` (no separate install step needed — Neovim's native package loader picks up anything under `pack/*/start/` automatically).
+Then run `:colorscheme version14`. Neovim's native package loader picks up anything under `pack/*/start/` automatically, so no separate install step is needed.
 
-## Verifying the install
-
-After installing, confirm you're on the latest commit and seeing the current palette:
+## Verify
 
 ```sh
 nvim --headless "+lua print(string.format('%06X', vim.api.nvim_get_hl(0, {name='Function'}).fg))" +qa
 ```
 
-This should print `B7A2FF` (the current violet accent). If it prints `D2FF3A` (the old lime accent) instead, your plugin manager still has a stale/pinned commit — run its sync/update command again.
+This should print `B7A2FF`, the current violet accent. If it prints `D2FF3A`, the old lime accent, your plugin manager has a stale or pinned commit. Run its sync or update command again.
 
 ## Usage
 
@@ -130,12 +126,12 @@ lua/version14/
 | Yellow | `#FFA85E` | `#FFA85E` | `#8F4400` |
 | Red | `#FF5C59` | `#FF5C59` | `#B91A25` |
 
-## Also available for Zed, Vim, VS Code, Ghostty, Starship, gh-dash, and Atuin
+## Also available for
 
-- [Zed extension](https://github.com/version14/zed-theme)
-- [Vim 8+ plugin](https://github.com/version14/vim-theme)
-- [VS Code extension](https://github.com/version14/vscode-theme)
-- [Ghostty theme](https://github.com/version14/ghostty-theme)
-- [Starship palette](https://github.com/version14/starship-theme)
-- [gh-dash theme](https://github.com/version14/gh-dash-theme)
-- [Atuin theme](https://github.com/version14/atuin-theme)
+- [Zed](https://github.com/version14/zed-theme)
+- [Vim](https://github.com/version14/vim-theme)
+- [VS Code](https://github.com/version14/vscode-theme)
+- [Ghostty](https://github.com/version14/ghostty-theme)
+- [Starship](https://github.com/version14/starship-theme)
+- [gh-dash](https://github.com/version14/gh-dash-theme)
+- [Atuin](https://github.com/version14/atuin-theme)
