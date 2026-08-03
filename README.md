@@ -1,23 +1,24 @@
 # version14
 
-A colorscheme for Neovim and Vim 8+, ported from the [version14 Zed theme](../zed-theme). Dark, black, and light variants built around a lime accent (`#D2FF3A`).
+A colorscheme for Neovim, ported from the [version14 Zed theme](https://github.com/version14/zed-theme). Dark, black, and light variants built around a violet accent (`#B7A2FF` dark/black, `#5F3BBB` light).
+
+> **Note:** the violet accent is currently a **placeholder**, standing in for a retired lime-green accent while a permanent replacement is chosen. It will change again in a future release.
+>
+> Looking for plain Vim 8+ support instead of Neovim? Use [`version14/vim-theme`](https://github.com/version14/vim-theme) — this repo only ships a thin fallback for Neovim below 0.8, not a full standalone Vim implementation.
 
 ## Requirements
 
-| Editor | Minimum version | Notes |
-|--------|-----------------|-------|
-| Neovim | 0.8+ | Lua implementation — full plugin support |
-| Vim    | 8.0+ | VimScript implementation — base groups + common plugins |
-
-Both require a terminal with true color support (`termguicolors`).
+- Neovim 0.8+
+- A terminal with true color support (`termguicolors`)
 
 ## Installation
 
-### Neovim — lazy.nvim
+### lazy.nvim
 
 ```lua
 {
-  "version14/version14.vim",
+  "version14/nvim-theme",
+  name = "version14",
   priority = 1000,
   config = function()
     vim.cmd("colorscheme version14")
@@ -25,30 +26,50 @@ Both require a terminal with true color support (`termguicolors`).
 }
 ```
 
-### Neovim — LazyVim
+Then run `:Lazy sync` (or restart Neovim — lazy.nvim installs missing plugins automatically on startup, but running `:Lazy sync` yourself guarantees it happens immediately rather than on the next launch).
 
-Add `~/.config/nvim/lua/plugins/colorscheme.lua`:
+### LazyVim
+
+Add to `~/.config/nvim/lua/plugins/colorscheme.lua`:
 
 ```lua
 return {
-  { "version14/version14.vim", priority = 1000 },
+  { "version14/nvim-theme", name = "version14" },
   { "LazyVim/LazyVim", opts = { colorscheme = "version14" } },
 }
 ```
 
-### Vim — vim-plug
+Then run `:Lazy sync`. **This step is required** — adding the spec alone does not download the plugin; until you sync, Neovim falls back to whatever colorscheme was previously installed.
 
-```vim
-Plug 'version14/version14.vim'
+### packer.nvim
+
+```lua
+use({ "version14/nvim-theme", as = "version14" })
 ```
 
-### Vim — manual
+Then run `:PackerSync`.
 
-Copy `colors/version14.vim` to `~/.vim/colors/version14.vim`.
+### Manual
+
+Clone the repo and add it to your runtimepath:
+
+```sh
+git clone https://github.com/version14/nvim-theme ~/.config/nvim/pack/plugins/start/version14
+```
+
+Then `:colorscheme version14` (no separate install step needed — Neovim's native package loader picks up anything under `pack/*/start/` automatically).
+
+## Verifying the install
+
+After installing, confirm you're on the latest commit and seeing the current palette:
+
+```sh
+nvim --headless "+lua print(string.format('%06X', vim.api.nvim_get_hl(0, {name='Function'}).fg))" +qa
+```
+
+This should print `B7A2FF` (the current violet accent). If it prints `D2FF3A` (the old lime accent) instead, your plugin manager still has a stale/pinned commit — run its sync/update command again.
 
 ## Usage
-
-### Neovim
 
 ```lua
 -- Dark variant (default)
@@ -67,24 +88,7 @@ vim.g.version14_style = "black"
 vim.cmd("colorscheme version14")
 ```
 
-### Vim
-
-```vim
-" Dark variant (default)
-colorscheme version14
-
-" Black variant (set before colorscheme)
-let g:version14_style = 'black'
-colorscheme version14
-
-" Light variant (set before colorscheme)
-let g:version14_style = 'light'
-colorscheme version14
-```
-
 ## Plugin support
-
-### Neovim
 
 | Plugin | Notes |
 |--------|-------|
@@ -103,36 +107,35 @@ colorscheme version14
 | todo-comments.nvim | Full |
 | neo-tree.nvim | Full |
 
-### Vim
-
-| Plugin | Notes |
-|--------|-------|
-| vim-gitgutter | Full |
-| vim-signify | Full |
-| ALE | Error/warning/info signs and underlines |
-| CoC | Error/warning/info/hint signs and underlines |
-| NERDTree | Full |
-| fzf | Color palette via `g:fzf_colors` |
-
 ## Structure
 
 ```
 colors/
   version14.lua       Neovim 0.8+ entry point (Lua)
-  version14.vim       Vim 8+ entry point (VimScript) + Neovim <0.8 fallback
+  version14.vim       Thin delegate for Neovim <0.8 (loads the Lua module)
 lua/version14/
   init.lua            setup() / load()
   palette.lua         Color definitions for dark / black / light
-  highlights.lua      Highlight group mappings (Neovim)
+  highlights.lua      Highlight group mappings
 ```
 
 ## Palette
 
 | Role | Dark | Black | Light |
 |------|------|-------|-------|
-| Background | `#14171B` | `#000000` | `#E8EAED` |
-| Accent (lime) | `#D2FF3A` | `#D2FF3A` | `#4E6600` |
-| Blue | `#6FB1FF` | `#6FB1FF` | `#1B4FCC` |
-| Green | `#4ADE80` | `#4ADE80` | `#166534` |
-| Yellow | `#FFB347` | `#FFB347` | `#92400E` |
-| Red | `#FF5C5C` | `#FF5C5C` | `#B91C1C` |
+| Background | `#14171B` | `#000000` | `#EBEDEF` |
+| Accent (placeholder) | `#B7A2FF` | `#B7A2FF` | `#5F3BBB` |
+| Blue | `#78AFFF` | `#78AFFF` | `#0054CB` |
+| Green | `#4BDE7F` | `#4BDE7F` | `#166534` |
+| Yellow | `#FFA85E` | `#FFA85E` | `#8F4400` |
+| Red | `#FF5C59` | `#FF5C59` | `#B91A25` |
+
+## Also available for Zed, Vim, VS Code, Ghostty, Starship, gh-dash, and Atuin
+
+- [Zed extension](https://github.com/version14/zed-theme)
+- [Vim 8+ plugin](https://github.com/version14/vim-theme)
+- [VS Code extension](https://github.com/version14/vscode-theme)
+- [Ghostty theme](https://github.com/version14/ghostty-theme)
+- [Starship palette](https://github.com/version14/starship-theme)
+- [gh-dash theme](https://github.com/version14/gh-dash-theme)
+- [Atuin theme](https://github.com/version14/atuin-theme)
