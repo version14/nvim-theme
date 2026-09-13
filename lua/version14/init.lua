@@ -35,6 +35,13 @@ function M.load(opts)
   for group, spec in pairs(highlights) do
     vim.api.nvim_set_hl(0, group, spec)
   end
+
+  -- :terminal reads these 16 globals, not the highlight groups above, so
+  -- without them the built-in terminal keeps Neovim's defaults and ignores
+  -- the theme entirely. palette.terminal is 1-indexed, the slots are 0-15.
+  for i, hex in ipairs(palette.terminal) do
+    vim.g["terminal_color_" .. (i - 1)] = hex
+  end
 end
 
 return M

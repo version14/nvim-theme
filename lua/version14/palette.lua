@@ -40,6 +40,29 @@ M.dark = {
   git_add     = "#4BDE7F",
   git_change  = "#78AFFF",
   git_delete  = "#FF5C59",
+
+  -- ANSI slots 0-15, read by :terminal via vim.g.terminal_color_*.
+  -- These are TEXT slots, not surface slots: 0 and 8 take the text ramp
+  -- (disabled / subtle). Filling them from the elevation ramp is what made
+  -- shell autosuggestions invisible -- see color-palette.md, "ANSI slot mapping".
+  terminal = {
+    "#4E5660", -- 0  text.disabled
+    "#FF5C59", -- 1  red
+    "#4BDE7F", -- 2  green
+    "#FFA85E", -- 3  yellow
+    "#78AFFF", -- 4  blue
+    "#ED8EF3", -- 5  magenta
+    "#B7A2FF", -- 6  cyan / accent
+    "#9CA0A6", -- 7  text.muted
+    "#6E737A", -- 8  text.subtle
+    "#FF5C59", -- 9
+    "#4BDE7F", -- 10
+    "#FFA85E", -- 11
+    "#78AFFF", -- 12
+    "#ED8EF3", -- 13
+    "#B7A2FF", -- 14
+    "#F2F4F6", -- 15 text
+  },
 }
 
 M.black = {
@@ -79,6 +102,26 @@ M.black = {
   git_add     = "#4BDE7F",
   git_change  = "#78AFFF",
   git_delete  = "#FF5C59",
+
+  -- Identical to dark: the text ramp is shared, only the elevation ramp differs.
+  terminal = {
+    "#4E5660", -- 0  text.disabled
+    "#FF5C59", -- 1  red
+    "#4BDE7F", -- 2  green
+    "#FFA85E", -- 3  yellow
+    "#78AFFF", -- 4  blue
+    "#ED8EF3", -- 5  magenta
+    "#B7A2FF", -- 6  cyan / accent
+    "#9CA0A6", -- 7  text.muted
+    "#6E737A", -- 8  text.subtle
+    "#FF5C59", -- 9
+    "#4BDE7F", -- 10
+    "#FFA85E", -- 11
+    "#78AFFF", -- 12
+    "#ED8EF3", -- 13
+    "#B7A2FF", -- 14
+    "#F2F4F6", -- 15 text
+  },
 }
 
 M.light = {
@@ -118,6 +161,27 @@ M.light = {
   git_add     = "#166534",
   git_change  = "#0054CB",
   git_delete  = "#B91A25",
+
+  -- Slot 8 is #636870, NOT fg2 (#787E86): the whole suite already uses #636870
+  -- for light secondary text, and it is the documented value for this slot.
+  terminal = {
+    "#999FA7", -- 0  text.disabled
+    "#B91A25", -- 1  red
+    "#166534", -- 2  green
+    "#8F4400", -- 3  yellow
+    "#0054CB", -- 4  blue
+    "#8C2293", -- 5  magenta
+    "#5F3BBB", -- 6  cyan / accent
+    "#535960", -- 7  text.muted
+    "#636870", -- 8  text.subtle
+    "#B91A25", -- 9
+    "#166534", -- 10
+    "#8F4400", -- 11
+    "#0054CB", -- 12
+    "#8C2293", -- 13
+    "#5F3BBB", -- 14
+    "#0D0F11", -- 15 text
+  },
 }
 
 return M
