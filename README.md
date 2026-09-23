@@ -2,6 +2,10 @@
 
 A colorscheme for Neovim, ported from the [version14 Zed theme](https://github.com/version14/zed-theme). Dark, black, and light variants built around a violet accent (`#B7A2FF` dark/black, `#5F3BBB` light).
 
+## Palette source
+
+The shared semantic colors are maintained in [version14/tokens](https://github.com/version14/tokens). This repository keeps Neovim-native generated files.
+
 > The violet accent is a placeholder, standing in for a retired lime green accent while a permanent replacement is chosen. It will change again in a future release.
 >
 > Looking for plain Vim 8+ support instead of Neovim? Use [`version14/vim-theme`](https://github.com/version14/vim-theme). This repo only ships a thin fallback for Neovim below 0.8, not a full standalone Vim implementation.
